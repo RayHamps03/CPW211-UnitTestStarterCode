@@ -18,23 +18,41 @@ public class SimpleMathTests
     [DataRow(0, -0)]
     public void Add_TwoNumbers_ReturnsSum(double num1, double num2)
     {
-        // Use the DataRow values to test the Add method
-        Assert.Fail();
+        Assert.AreEqual(num1 + num2, SimpleMath.Add(num1, num2));
+    }
+
+    [TestMethod()]
+    [DataRow(10, 5)]
+    [DataRow(100, 200)]
+    [DataRow(0, 0)]
+
+    public void Subtract_TwoNumbers_ReturnsDifference(double num1, double num2)
+    {
+        Assert.AreEqual(num1 - num2, SimpleMath.Subtract(num1, num2));
     }
 
     [TestMethod]
-    public void Multiply_TwoNumbers_ReturnsProduct()
+    [DataRow(5, 10)]
+    [DataRow(0, 100)]
+    [DataRow(0, 0)]
+    public void Multiply_TwoNumbers_ReturnsProduct(double num1, double num2)
     {
-        // Use a few pairs of values to test the Multiply method
-        Assert.Fail();
+        Assert.AreEqual(num1 * num2, SimpleMath.Multiply(num1, num2));
+    }
+
+    [TestMethod]
+    [DataRow(10, 5)]
+    [DataRow(5, 10)]
+    [DataRow(0, 100)]
+    public void Divide_TwoNumbers_ReturnsQuotient(double num1, double num2)
+    {
+        Assert.AreEqual(num1 / num2, SimpleMath.Divide(num1, num2));
     }
 
     [TestMethod]
     public void Divide_DenominatorZero_ThrowsArgumentException()
     {
-        // Divide by zero should throw an argument exception with a message
-        // "Denominator cannot be zero"
-        Assert.Fail();
+        Assert.ThrowsExactly<ArgumentException>(() => SimpleMath.Divide(10, 0), "Denominator cannot be zero");
     }
 
     // TODO: Add a new test to test the Divide method with two valid numbers
